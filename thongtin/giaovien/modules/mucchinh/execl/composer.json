@@ -1,0 +1,17 @@
+{
+    "name": "pc/filemoi",
+    "autoload": {
+        "psr-4": {
+            "Pc\\Filemoi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "huycodedie",
+            "email": "147299260+huycodedie@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.5"
+    }
+}

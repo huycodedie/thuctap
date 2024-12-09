@@ -1,7 +1,8 @@
 <?php 
+ $usersv = mysqli_real_escape_string($mysqli, $_SESSION['usersv']); 
 $sql_danhsach = "SELECT *
-               FROM users
-               WHERE id LIMIT 1"; 
+               FROM usersv
+               WHERE idsv ='$usersv' "; 
 $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
 ?>
 
@@ -9,8 +10,8 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="http://localhost/doan/admin/" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+      <a href="http://localhost/cnpm/thongtin/sinhvien/" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.jpg" alt="">
         <span class="d-none d-lg-block">Sinh Viên</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -40,7 +41,7 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
           ?>
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $row['username'] ?></span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $row['usernamesv'] ?></span>
           </a> 
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

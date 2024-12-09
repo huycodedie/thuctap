@@ -12,7 +12,7 @@ $malhc = $_POST['malhc'];
 
 if(isset($_POST['themtksv'])){
 
-     // Query to check if email already exists
+    
      $checkEmailQuery = "SELECT * FROM usersv WHERE email = '$email'";
      $result = mysqli_query($mysqli, $checkEmailQuery);
 
@@ -20,14 +20,14 @@ if(isset($_POST['themtksv'])){
      $checktenQuery = "SELECT * FROM usersv WHERE usernamesv = '$tensv'";
      $result2 = mysqli_query($mysqli, $checktenQuery);
      if (mysqli_num_rows($result) > 0) {
-        // Redirect or show an error message
+        
         
         header('location:../../../../index.php?action=themtksvsaiemail');
     }if (mysqli_num_rows($result2) > 0) {
         header('location:../../../../index.php?action=themtksvsaiten');
     }
     else {
-        // Insert new teacher record if email doesn't exist
+       
         $sql_them = "INSERT INTO usersv(usernamesv,email,created_at,password,malhc) 
     VALUE('".$tensv."','".$email."','".$ngay."','".$mk."','".$malhc."')";
     mysqli_query($mysqli,$sql_them);
@@ -43,8 +43,12 @@ if(isset($_POST['themtksv'])){
     header('location:../../../../index.php?action=khoa');
 }else{
     $id=$_GET['idsv'];
+    $sql_xoa="DELETE FROM bangdiem WHERE masv ='".$id."'";
+    mysqli_query($mysqli,$sql_xoa);
+  
     $sql_xoa="DELETE FROM usersv WHERE idsv ='".$id."'";
     mysqli_query($mysqli,$sql_xoa);
+    
     header('location:../../../../index.php?action=profile');
 }
 ?>

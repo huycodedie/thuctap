@@ -10,12 +10,12 @@
                     <div class="card-body mt-4">   
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Tên khoa</label>
-                            <div class="col-sm-10">
-                                <input asp-for="BookName" type="text" class="form-control" placeholder="Nhập" name="tenkhoa">
+                            <div class="col-sm-4">
+                                <input asp-for="BookName" type="text" class="form-control" placeholder="Nhập" name="tenkhoa" required>
                             </div>
                           
                            
-                            </div>
+                            
                         </div>
                         <button type="submit" name="themkhoa" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Lưu</button>
                         <a href="index.php?action=khoa" asp-controller="Book" asp-action="Index" class="btn btn-lg btn-warning p-2"><i class="bi bi-arrow-left me-1"></i>Quay lại</a>
