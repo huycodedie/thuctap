@@ -1,14 +1,5 @@
-<?php 
-$sql_lhc = "SELECT*FROM qllophanhchinh c
-                    JOIN qlkhoa k 
-                    ON c.makhoa = k.idkhoa
-                     ORDER BY idlhc ";
-$query_danhsach = mysqli_query($mysqli,$sql_lhc);
-?>
+
 <main id="main" class="main">
-<div class="notification-box">
-        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
-       tên tài khoản đã tồn tại vui lòng nhập lại   </div>
     <div class="pagetitle">
         <h2>Thêm giáo viên</h2>
     </div>
@@ -19,36 +10,29 @@ $query_danhsach = mysqli_query($mysqli,$sql_lhc);
             <div class="card recend-sales overflow-auto">
                 <div class="card-body mt-4">   
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Tên tài khoản</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-2 col-form-label">Tên giáo viên</label>
+                        <div class="col-sm-5">
                             <input asp-for="BookName" type="text" class="form-control" placeholder="Nhập" name="tengv" required>
-                            
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-2 col-form-label">email</label>
+                        <div class="col-sm-5">
                             <input asp-for="BookName" type="text" class="form-control" placeholder="Nhập" name="email" required>
-                            <div class="error-message-email" style="color: red;"  ></div>
+                            <div class="error-message-email"></div>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Lớp hành chính</label>
-                        <div class="col-sm-10">
-                            <select name="malhc" id="search" asp-for="CreatedBy" type="text" class="form-control" ><option >chọn lớp</option>
-                                <?php 
-                                $i = 0;
-                                while($row = mysqli_fetch_array($query_danhsach)){
-                                    $i++;
-                                ?>
+                    <?php
 
-                                        <option  ><?php echo $row['idlhc'] ?> - <?php echo $row['tenlop']  ?> - <?php echo $row['tenkhoa']  ?></option>
-                                <?php 
-                                } 
-                                ?>
-                                </select>
-                        </div>
-                    </div>
+if (isset($_SESSION['errors'])) {
+ echo '<div class="alert alert-danger">';
+ foreach ($_SESSION['errors'] as $error) {
+ echo '<p>' . htmlspecialchars($error) . '</p>';
+ }
+ echo '</div>';
+unset($_SESSION['errors']); // Xóa lỗi sau khi hiển thị
+}
+?>
                     <div class="row mb-3">
                         
                         <div class="col-sm-12">
@@ -84,18 +68,11 @@ $query_danhsach = mysqli_query($mysqli,$sql_lhc);
                 $('.error-message-email').html(emailError).show(); // Hiển thị lỗi email
             } else {
                 $('.error-message-email').hide(); // Ẩn thông báo lỗi email
-           
+       
                 this.submit(); // Gửi form nếu không có lỗi
             }
         });
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-    $('#search').select2({    
-    });
-});
-
-</script>
 
