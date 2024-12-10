@@ -1,1 +1,0 @@
-$email = $_POST['email'];
