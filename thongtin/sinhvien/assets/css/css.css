@@ -1,0 +1,49 @@
+
+
+
+
+.main-container {
+    text-align: center;
+    color: #4c88f5; /* Màu xanh chữ */
+}
+
+.content-box {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.icon-box {
+    font-size: 80px;
+    color: #4c88f5;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    color: #4c88f5;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.back-link i {
+    margin-right: 5px;
+}
