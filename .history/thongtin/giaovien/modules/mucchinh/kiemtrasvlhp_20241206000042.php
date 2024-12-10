@@ -1,8 +1,0 @@
-
-<?php
-           
-          
-            
-            include("sidebar.php");
-            
-    ?>
