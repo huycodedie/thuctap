@@ -37,12 +37,9 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
                                     <th class="text-center" scope="row"><?php echo $i ?> </th>
                                     <td class="text-center"><?php echo $row['idkhoa'] ?></td>
                                     <td class="text-center"><?php echo $row['tenkhoa'] ?></td>
-                                    
-
                                     <td class="text-center">
                                         <a href="index.php?action=suakhoa&idkhoa=<?php echo $row['idkhoa'] ?>" class="btn btn-primary btn-sm" title="sua noi dung"><i class="bi bi-pencil"></i></a>
                                         <a href="javascript:void(0);" onclick="confirmDeletion(<?php echo $row['idkhoa']; ?>);" class="btn btn-danger btn-sm" title="xóa"><i class="bi bi-trash"></i></a>
-                                        
                                     </td>
                                 </tr>
     

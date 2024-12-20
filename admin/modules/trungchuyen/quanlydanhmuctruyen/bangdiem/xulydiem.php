@@ -2,6 +2,7 @@
 <?php 
 session_start();
 include('../../../../config/config.php');
+$data = json_decode(file_get_contents('php://input'), true);
 $quatrinh = $_POST['quatrinh'];
 
 $cuoiky = $_POST['cuoiky'];
@@ -12,55 +13,31 @@ if(isset($_POST['themdiem'])){
     WHERE madiem = '$_GET[madiem]'";
     mysqli_query($mysqli,$sql_themdiem);
     header('location:../../../../index.php?action=diem');
-}
-if(isset($_POST['sua'])){
-    $sua = 0;
-    $sua2 = 1;
-    $checksua = "SELECT * FROM bangdiem WHERE madiem = '$_GET[madiem]' AND sua ='$sua'";
-    $resultsua = mysqli_query($mysqli, $checksua);
-    if(mysqli_num_rows($resultsua)>0){
+}elseif (isset($data['madiem'], $data['sua'])) {
+    $madiem = $data['madiem'];
+    $sua = $data['sua'];
+    $updateSql = "UPDATE bangdiem SET sua = ? WHERE madiem = ?";
+    $stmt = $mysqli->prepare($updateSql);
+    $stmt->bind_param('ii', $sua, $madiem);
 
-        $sql_themdiem = "UPDATE bangdiem SET sua='".$sua2."' 
-        WHERE madiem = '$_GET[madiem]'";
-        mysqli_query($mysqli,$sql_themdiem);
-        $errors[] = "Bỏ quyền thành công.";
-    }else{
-        $sql_themdiem = "UPDATE bangdiem SET sua='".$sua."' 
-        WHERE madiem = '$_GET[madiem]'";
-        mysqli_query($mysqli,$sql_themdiem);
-        $errors[] = "Cấp quyền thành công.";
+    if ($stmt->execute()) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Không thể cập nhật dữ liệu']);
     }
-    $_SESSION['errors'] = $errors;
-    header('Location: ../../../../index.php?action=diem');
-    exit;
-}
-if(isset($_POST['thilai'])){
-    $thilai = 0;
-    $thilai2 = 1;
-    $checksua = "SELECT * FROM bangdiem WHERE madiem = '$_GET[madiem]' AND thilai ='$thilai'";
-    $resultsua = mysqli_query($mysqli, $checksua);
-    if(mysqli_num_rows($resultsua)>0){
+}elseif (isset($data['madiem'], $data['thilai'])) {
+    $madiem = $data['madiem'];
+    $thilai = $data['thilai'];
 
-        $sql_themdiem = "UPDATE bangdiem SET thilai='".$thilai2."' 
-        WHERE madiem = '$_GET[madiem]'";
-        mysqli_query($mysqli,$sql_themdiem);
-        $errors[] = "Bỏ quyền thành công.";
-    }else{
-        $sql_themdiem = "UPDATE bangdiem SET thilai='".$thilai."' 
-        WHERE madiem = '$_GET[madiem]'";
-        mysqli_query($mysqli,$sql_themdiem);
-        $errors[] = "Cấp quyền thi lại thành công.";
+    $updateSql = "UPDATE bangdiem SET thilai = ? WHERE madiem = ?";
+    $stmt = $mysqli->prepare($updateSql);
+    $stmt->bind_param('ii', $thilai, $madiem);
+
+    if ($stmt->execute()) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Không thể cập nhật dữ liệu']);
     }
-    $_SESSION['errors'] = $errors;
-    header('Location: ../../../../index.php?action=diem');
-    exit;
-}else{
-    $id=$_GET['madiem'];
-    $sql_xoa="DELETE FROM bangdiem WHERE madiem='".$id."'";
-    mysqli_query($mysqli,$sql_xoa);
-    $errors[] = "Xóa điểm thành công.";
-    $_SESSION['errors'] = $errors;
-    header('Location: ../../../../index.php?action=diem');
-    exit;
 }
 ?>
+

@@ -42,20 +42,16 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
                                     $i++;
                                 ?>
                                 <tr>
-                                    <th class="text-center" scope="row"><?php echo $i ?> </th>
-                                    
+                                    <th class="text-center" scope="row"><?php echo $i ?> </th>    
                                     <th class="text-center" scope="row"> <?php echo $row['tenlop'] ?> </th>  
                                     <th class="text-center" scope="row"> <?php echo $row['username'] ?> </th>  
                                     <th class="text-center" scope="row"> <?php echo $row['tenkhoa'] ?> </th>
-                                    
-                        
                                     <td class="text-center">
                                         <a href="index.php?action=phutrach&idlhc=<?php echo $row['idlhc'] ?>" class="btn btn-success btn-sm" title="thêm người phụ trách"><i class="bi bi-person"></i></a>
                                         <a href="index.php?action=sualhc&idlhc=<?php echo $row['idlhc'] ?>" class="btn btn-primary btn-sm" title="sửa nội dung"><i class="bi bi-pencil"></i></a>
                                         <a href="modules/trungchuyen/quanlydanhmuctruyen/lophanhchinh/xulylhc.php?idlhc=<?php echo $row['idlhc'] ?>" class="btn btn-danger btn-sm" title="xóa lớp hành chính"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
-    
                                 <?php
                                 }
                                 ?>

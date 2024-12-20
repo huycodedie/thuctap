@@ -53,21 +53,12 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
                                     
                                     <td class="text-center">
                                         <div class="form-check form-switch">
-                                        <form action="modules/trungchuyen/quanlydanhmuctruyen/bangdiem/xulydiem.php?madiem=<?php echo $row['madiem']; ?>" method="POST" style="display: inline;">
-                                        <input type="hidden" name="madiem" value="<?php echo $row['madiem']; ?>">
-                                        <input type="hidden" name="sua" value="">
-                                        <input name="sua" type="checkbox" class="form-check-input" title="Cấp quyền sửa điểm" onchange="this.form.submit();"  <?php echo ($row['sua'] == 1) ? 'checked' : ''; ?>>
-                                        </form>
-                                        
+                                        <input type="checkbox" class="form-check-input" title="Cấp quyền sửa điểm" onchange="updateSua(<?php echo $row['madiem']; ?>, this.checked);" <?php echo ($row['sua'] == 1) ? 'checked' : ''; ?>>
                                         <a href="javascript:void(0);" onclick="confirmDeletion(<?php echo $row['madiem']; ?>);" class="btn btn-danger btn-sm" title="xóa"><i class="bi bi-trash"></i></a>
                                         
                                         </div>
                                         <div class="form-check form-switch">
-                                        <form action="modules/trungchuyen/quanlydanhmuctruyen/bangdiem/xulydiem.php?madiem=<?php echo $row['madiem']; ?>" method="POST" style="display: inline;">
-                                        <input type="hidden" name="madiem" value="<?php echo $row['madiem']; ?>">
-                                        <input type="hidden" name="thilai" value="">
-                                        <input name="thilai" type="checkbox" class="form-check-input" title="Cấp quyền thi lại" onchange="this.form.submit();"  <?php echo ($row['thilai'] == 1) ? 'checked' : ''; ?>>
-                                        </form>
+                                        <input type="checkbox" class="form-check-input" title="Cấp quyền sửa điểm thi lại" onchange="updatethilai(<?php echo $row['madiem']; ?>, this.checked);" <?php echo ($row['thilai'] == 1) ? 'checked' : ''; ?>>
 
                                         </div>
                                         <!--<a href="index.php?action=themdiem&madiem=<?php echo $row['madiem'] ?>" class="btn btn-success btn-sm" title="thêm điểm cho sinh viên"><i class="bi bi-pencil"></i></a>
@@ -98,4 +89,30 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
             window.location.href = "modules/trungchuyen/quanlydanhmuctruyen/bangdiem/xulydiem.php?madiem=" + madiem;
         }
     }
+</script>
+<script>
+function updateSua(madiem, checked) {
+    fetch('modules/trungchuyen/quanlydanhmuctruyen/bangdiem/xulydiem.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            madiem: madiem,
+            sua: checked ? 1 : 0
+        })
+    })
+}
+function updatethilai(madiem, checked) {
+    fetch('modules/trungchuyen/quanlydanhmuctruyen/bangdiem/xulydiem.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            madiem: madiem,
+            thilai: checked ? 1 : 0
+        })
+    })
+}
 </script>

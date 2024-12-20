@@ -1,19 +1,16 @@
 <?php 
 include('../../config/config.php');
-
 require 'execl/vendor/autoload.php'; 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-
-
 if (isset($_GET['action']) && $_GET['action'] == 'export') {
     // Truy vấn lấy dữ liệu
+    $tukhoa = $_GET['tukhoa'];
     $malhp = $_GET['malhp'];
     $sql = "SELECT * FROM bangdiem d 
                     JOIN usersv s ON s.idsv = d.masv 
                     JOIN qllophocphan p ON p.malhp = d.malhp 
-                    WHERE d.malhp = $malhp";
+                    WHERE d.malhp = $malhp AND ( s.usernamesv LIKE '%".$tukhoa."%' OR d.masv LIKE '%".$tukhoa."%')";
     $result = mysqli_query($mysqli,$sql);
     $result2 = mysqli_query($mysqli,$sql);
     $ten = mysqli_fetch_assoc($result2);

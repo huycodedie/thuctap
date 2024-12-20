@@ -54,7 +54,7 @@ $query_danhsach2 = mysqli_query($mysqli,$sql_danhsach2);
                                     <td class="text-center"><?php echo $row['tenlop'] ?></td>
 
                                     <td class="text-center">
-                                        <a href="index.php?action=danh-sach-sv&idgv=<?php echo $row['idgv'] ?>&idlhc=<?php echo $row['idlhc'] ?>" class="btn btn-primary btn-sm" title="noi dung"><i class="bi bi-file-earmark-text me-1"></i></a>
+                                        <a href="index.php?action=danh-sach-sv&idgv=<?php echo $row['idgv'] ?>&malhc=<?php echo $row['malhc'] ?>" class="btn btn-primary btn-sm" title="noi dung"><i class="bi bi-file-earmark-text me-1"></i></a>
                                         
                                     </td>
                                 </tr>

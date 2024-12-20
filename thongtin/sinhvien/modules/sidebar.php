@@ -17,9 +17,15 @@
     </a>
   </li>-->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="index.php?action=bang-diem&masv=<?php echo $row['idsv'] ?>">
+    <a class="nav-link collapsed" href="index.php?action=bang-diem-chi-tiet&masv=<?php echo $row['idsv'] ?>">
       <i class="bi bi-card-list"></i>
       <span>Bảng điểm chi tiết</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="index.php?action=bang-diem-tong-hop&masv=<?php echo $row['idsv'] ?>">
+      <i class="bi bi-card-list"></i>
+      <span>Bảng điểm tổng hợp</span>
     </a>
   </li>
 

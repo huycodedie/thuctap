@@ -6,10 +6,12 @@
         $tam='';
         
     }
-    if($tam=='bang-diem'){
+    if($tam=='bang-diem-chi-tiet'){
         include("modules/trungchuyen/bangdiem.php");
     }else if($tam=='thong-tin-sinh-vien'){
         include("modules/trungchuyen/hoso.php");
+    }else if($tam=='bang-diem-tong-hop'){
+        include("modules/trungchuyen/tonghop.php");
     }else if($tam=='1'){
         
             // Xóa phiên đăng nhập

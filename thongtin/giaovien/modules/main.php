@@ -20,12 +20,11 @@
         include("modules/mucchinh/diemsv.php");
     }else if($tam=='them-diem-sinh-vien'){
         include("modules/mucchinh/themdiemsv.php");
-    }else if($tam=='sv-lop-hoc-phan'){
-        include("modules/mucchinh/kiemtrasvlhp.php");
-   
     }else if($tam=='timkiem'){
         include("modules/mucchinh/kiemtrasvlhp.php");
-   
+    }
+    else if($tam=='tim-kiem-sv'){
+        include("modules/mucchinh/danhsachsv.php");
     }
     else if($tam=='1'){
         

@@ -51,19 +51,12 @@ $query_danh = mysqli_query($mysqli,$sql_danh);
                                 <tr>
                                     <th class="text-center" scope="row"><?php echo $i ?> </th>
                                     <td class="text-center"><?php echo $row['username'] ?></td>
-                                    <th class="text-center" > <?php echo $row['email'] ?> </th>
-                                    
-                                    
-                                                                    
+                                    <th class="text-center" > <?php echo $row['email'] ?> </th>                             
                                     <td class="text-center" ><?php echo $row['created_at'] ?></td>
-                                    
-                                    
                                     <td class="text-center">
-                                    <a href="javascript:void(0);" onclick="confirmDeletiongv(<?php echo $row['idgv']; ?>);" class="btn btn-danger btn-sm" title="xóa giáo viên"><i class="bi bi-trash"></i></a> 
-                                        
+                                    <a href="javascript:void(0);" onclick="confirmDeletiongv(<?php echo $row['idgv']; ?>);" class="btn btn-danger btn-sm" title="xóa giáo viên"><i class="bi bi-trash"></i></a>   
                                     </td>
                                 </tr>
-    
                                 <?php
                                 }
                                 ?>
@@ -117,19 +110,12 @@ $query_danh = mysqli_query($mysqli,$sql_danh);
                                     <td class="text-center"><?php echo $row['usernamesv'] ?></td>
                                     <th class="text-center" > <?php echo $row['email'] ?> </th>
                                     <td class="text-center" > <?php echo $row['tenlop'] ?> </td>
-                                    <td class="text-center" > <?php echo $row['tenkhoa'] ?> </td>
-                                    
-                                                                    
+                                    <td class="text-center" > <?php echo $row['tenkhoa'] ?> </td>                          
                                     <td class="text-center" scope="row"><?php echo $row['created_at'] ?></td>
-                                    
-                                    
                                     <td class="text-center">
-                                        
                                     <a href="javascript:void(0);" onclick="confirmDeletionsv(<?php echo $row['idsv']; ?>);" class="btn btn-danger btn-sm" title="xóa sinh viên"><i class="bi bi-trash"></i></a> 
-                                        
                                     </td>
                                 </tr>
-    
                                 <?php
                                 }
                                 ?>

@@ -69,8 +69,9 @@ $query_ten = mysqli_query($mysqli,$ten);
                           </div>
                         </div>
                       </div>
+                    
                       <h1></h1>
-                      <button type="button" class="btn  btn-primary "><a href="modules/mucchinh/xulyxuatexecl.php?action=export&malhp=<?php echo $_GET['malhp'] ?> " style="color:aliceblue">xuất data ra Excel</a></button>
+                      <button type="button" class="btn  btn-primary "><a href="modules/mucchinh/xulyxuatexecl.php?action=export&malhp=<?php echo $_GET['malhp'] ?>&tukhoa=<?php echo $tukhoa ?>" style="color:aliceblue">xuất data ra Excel</a></button>
               </div>
             </div>
           </div>
@@ -78,10 +79,9 @@ $query_ten = mysqli_query($mysqli,$ten);
        
 <?php   
 if($tukhoa==NULL){
-include("svhocphan.php");
+include("hocphan/svhocphan.php");
 }else{
-  include("main2.php");
+  include("hocphan/main2.php");
 }    
-
 ?>
 </main>

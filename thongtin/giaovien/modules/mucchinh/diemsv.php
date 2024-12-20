@@ -21,7 +21,7 @@ $query_danhsach2 = mysqli_query($mysqli,$sql_danhsach2);
     <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.php?action=khoa&idgv=<?php echo $user_id ?>">Khoa</a></li>
-      <li class="breadcrumb-item"><a href="index.php?action=danh-sach-sv&idgv=<?php echo $user_id ?>&idlhc=<?php echo $trolai['malhc'] ?>">danh sách</a></li>
+      <li class="breadcrumb-item"><a href="index.php?action=danh-sach-sv&idgv=<?php echo $user_id ?>&malhc=<?php echo $trolai['malhc'] ?>">danh sách</a></li>
       <li class="breadcrumb-item"><a href="index.php?action=diem-sinh-vien&idsv=<?php echo $_GET['idsv'] ?>">Điểm</a></li>
     </nav>
 </div>

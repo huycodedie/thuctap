@@ -85,14 +85,14 @@
             foreach ($_SESSION['errorstk'] as $error) {
                 echo '<p>' . htmlspecialchars($error) . '</p>';
             }
-            unset($_SESSION['errorstk']); // Xóa lỗi sau khi hiển thị
+            unset($_SESSION['errorstk']);
         }
-        // Hiển thị lỗi mật khẩu
+ 
         if (isset($_SESSION['errorsmk'])) {
             foreach ($_SESSION['errorsmk'] as $error) {
                 echo '<p>' . htmlspecialchars($error) . '</p>';
             }
-            unset($_SESSION['errorsmk']); // Xóa lỗi sau khi hiển thị
+            unset($_SESSION['errorsmk']); 
         }
         echo '</div>';
     }

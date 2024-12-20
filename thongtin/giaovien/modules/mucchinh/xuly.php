@@ -9,6 +9,7 @@ $quatrinh = $_POST['quatrinh'];
 $magv = $_GET['magv'];
 $cuoiky = $_POST['cuoiky'];
 $sua = 1;
+$thilai = 1;
 $malhp = isset($_GET['malhp']) ? $_GET['malhp'] : ''; 
 
 if(isset($_POST['gvthemdiem'])){
@@ -38,81 +39,100 @@ if(isset($_POST['gvthemdiem'])){
                 $masv = isset($row['B']) ? $row['B'] : null;
                 $quatrinh = isset($row['D']) ? $row['D'] : null;
                 $cuoiky = isset($row['E']) ? $row['E'] : null;
-                $thilai = isset($row['F']) ? $row['F'] : null;
+                $diemthilai = isset($row['F']) ? $row['F'] : null;
              
-                $checkSql = "SELECT masv FROM bangdiem WHERE masv = '$masv'";
+                $checkSql = "SELECT masv, sua, diemthilai FROM bangdiem WHERE masv = '$masv' AND malhp = '$malhp'";
                 $result = $mysqli->query($checkSql);
                 
-                $checkquatrinh = "SELECT quatrinh FROM bangdiem WHERE quatrinh = '$quatrinh'";
-                $resultqt = $mysqli->query($checkquatrinh);
-
-                $checkcuoiky = "SELECT cuoiky FROM bangdiem WHERE cuoiky = '$cuoiky'";
-                $resultck = $mysqli->query($checkcuoiky);
-
-
                 if ($result->num_rows > 0) {
-                  
-                    if(!is_null($thilai)){
-                        if(!is_null($quatrinh)){
-                            if(!is_null($cuoiky)){
-                                $updateSql = "UPDATE bangdiem SET diemthilai = '$thilai', quatrinh = '$quatrinh', cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
-                                }
-                            }else{
-                                $updateSql = "UPDATE bangdiem SET diemthilai = '$thilai', quatrinh = '$quatrinh' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
+                  $row = $result->fetch_assoc();
+                    if($row['sua'] == 0){
+                        if($row['thilai'] == 0){
+                            if(!is_null($diemthilai)){
+                                if(!is_null($quatrinh)){
+                                    if(!is_null($cuoiky)){
+                                        $updateSql = "UPDATE bangdiem SET diemthilai = '$diemthilai', quatrinh = '$quatrinh', cuoiky = '$cuoiky', sua = '$sua', thilai = '$thilai' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }else{
+                                        $updateSql = "UPDATE bangdiem SET diemthilai = '$diemthilai', quatrinh = '$quatrinh', thilai = '$thilai' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }
+                                }else{
+                                    if(!is_null($quatrinh)){
+                                        $updateSql = "UPDATE bangdiem SET diemthilai = '$diemthilai', cuoiky = '$cuoiky', sua = '$sua', thilai = '$thilai' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }else{
+                                        $updateSql = "UPDATE bangdiem SET diemthilai = '$diemthilai', thilai = '$thilai' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }
+                                }     
+                            }else{      
+                                if(!is_null($quatrinh)){
+                                    if(!is_null($cuoiky)){
+                                        $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh', cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }else{
+                                        $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }
+                                }else{
+                                    if(!is_null($quatrinh)){
+                                        $updateSql = "UPDATE bangdiem SET cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                        $mysqli->query($updateSql);
+                                    }else{
+                                        echo $masv;
+                                    }
                                 }
                             }
                         }else{
                             if(!is_null($quatrinh)){
-                                $updateSql = "UPDATE bangdiem SET diemthilai = '$thilai', cuoiky = '$cuoiky' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
+                                if(!is_null($cuoiky)){
+                                    $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh', cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                    $mysqli->query($updateSql);
+                                }else{
+                                    $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                    $mysqli->query($updateSql);
                                 }
                             }else{
-                                echo $masv;
-                            }
-                        }     
-                    }else{      
-                        if(!is_null($quatrinh)){
-                            if(!is_null($cuoiky)){
-                                $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh', cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
+                                if(!is_null($quatrinh)){
+                                    $updateSql = "UPDATE bangdiem SET cuoiky = '$cuoiky', sua = '$sua' WHERE masv = '$masv' AND malhp = '$malhp'";
+                                    $mysqli->query($updateSql);
+                                }else{
+                                    echo $masv;
                                 }
-                            }else{
-                                $updateSql = "UPDATE bangdiem SET quatrinh = '$quatrinh' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
-                                }
-                            }
+                            } 
+                        }
+                    }elseif($row['thilai'] === 0 ){
+                        if(!is_null($diemthilai)){
+                            $updateSql = "UPDATE bangdiem SET diemthilai = '$diemthilai', thilai = '$thilai' WHERE masv = '$masv' AND malhp = '$malhp'";
+                            $mysqli->query($updateSql);
                         }else{
-                            if(!is_null($quatrinh)){
-                                $updateSql = "UPDATE bangdiem SET cuoiky = '$cuoiky' WHERE masv = '$masv' AND malhp = '$malhp'";
-                                if (!$mysqli->query($updateSql)) {
-                                    echo "Error: " . $mysqli->error;
-                                }
-                            }else{
-                                echo $masv;
-                            }
+                            echo $masv;
                         }
                     }
                 } else {
-                
-                    echo $masv;
+                    $error[] = " echo $masv;";
+                    
                 }
             }
 
-            echo "Data uploaded and updated successfully!";
+            $error[] = " echo $masv;";
         } else {
-            echo "Invalid file type. Please upload an Excel file.";
+            $error[] = " echo $masv;";
         }
     } else {
-        echo "No file uploaded or there was an upload error.";
+        $error[] = " echo $masv;";
     }
-    header("Location:../../index.php?action=sv-lop-hoc-phan&malhp=$malhp&magv=$magv");
+    
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        header("Location:../../index.php?action=sv-lop-hoc-phan&malhp=$malhp&magv=$magv");
+    }
+    if (!empty($error)) {
+        $_SESSION['error'] = $error;
+        header("Location:../../index.php?action=sv-lop-hoc-phan&malhp=$malhp&magv=$magv");
+    }
+    exit;
 }
 
 ?>

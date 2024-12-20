@@ -64,24 +64,24 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
   </header><!-- End Header -->
   <?php
 
-// Hiển thị danh sách lỗi logic
+
 if (isset($_SESSION['errors'])) {
     echo '<div class="error-box">';
     foreach ($_SESSION['errors'] as $msg) {
         echo '<p><img src="assets/img/vdong.gif" alt="Icon động" width="50" height="50">' . htmlspecialchars($msg) . '</p>';
     }
     echo '</div>';
-    unset($_SESSION['errors']); // Xóa lỗi sau khi hiển thị
+    unset($_SESSION['errors']); 
 }
 
-// Hiển thị danh sách lỗi hệ thống
+
 if (isset($_SESSION['error'])) {
     echo '<div class="error-box system-error">';
     foreach ($_SESSION['error'] as $msg) {
         echo '<p><img src="" alt="Icon động" width="50" height="50">' . htmlspecialchars($msg) . '</p>';
     }
     echo '</div>';
-    unset($_SESSION['error']); // Xóa lỗi sau khi hiển thị
+    unset($_SESSION['error']); 
 }
 ?>
 

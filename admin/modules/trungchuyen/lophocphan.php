@@ -62,7 +62,6 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
                                         <a href="modules/trungchuyen/quanlydanhmuctruyen/lophocphan/xulylhp.php?malhp=<?php echo $row['malhp_lhp'] ?>" class="btn btn-danger btn-sm" title="xoa lớp hành chính"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
-    
                                 <?php
                                 }
                                 ?>

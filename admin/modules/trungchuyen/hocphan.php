@@ -41,7 +41,6 @@ $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
                                     <th class="text-center" scope="row"><?php echo $i ?> </th>
                                     <td class="text-center"><?php echo $row['mahp'] ?></td>
                                     <th class="text-center" scope="row"> <?php echo $row['tenhp'] ?> </th>  
-                    
                                     <th class="text-center" scope="row"> <?php echo $row['tenkhoa'] ?> </th>   
                                     <td class="text-center">
                                         <a href="index.php?action=suahp&mahp=<?php echo $row['mahp'] ?>" class="btn btn-primary btn-sm" title="sua noi dung"><i class="bi bi-pencil"></i></a>

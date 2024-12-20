@@ -1,15 +1,17 @@
 <?php 
 $sql_danhsach = "SELECT * FROM bangdiem b
-                JOIN qllophocphan p ON p.malhp = b.malhp 
-                JOIN qlhocphan h ON h.mahp = p.mahp
-                JOIN usersv s ON s.idsv = b.masv
-                WHERE b.masv ='$_GET[masv]' ORDER BY madiem"; 
+                    JOIN qllophocphan p ON p.malhp = b.malhp 
+                    JOIN qlhocphan h ON h.mahp = p.mahp
+                    JOIN usersv s ON s.idsv = b.masv
+                    JOIN namhoc n ON n.idnam = p.hoc_ky
+                    WHERE b.masv = '$_GET[masv]' 
+                    AND b.quatrinh IS NOT NULL AND b.quatrinh != ''
+                    AND b.cuoiky IS NOT NULL AND b.cuoiky != ''
+                    ORDER BY b.madiem";
 $query_danhsach = mysqli_query($mysqli,$sql_danhsach);
 $query_danhsach2 = mysqli_query($mysqli,$sql_danhsach);
 ?>
 <body>
-    
-
 <main id="main" class="main">
     <?php          
         $row = mysqli_fetch_array($query_danhsach2);
@@ -30,13 +32,14 @@ $query_danhsach2 = mysqli_query($mysqli,$sql_danhsach);
                             <thead>
                                 <tr>
                                     <th class="col-0 text-center">STT</th>
-                                    <th class="col-3 text-center">Tên HP </th>
+                                    <th class="col-2 text-center">Năm học </th>
+                                    <th class="col-2 text-center">Tên HP </th>
                                     <th class="col-1 text-center">số TC</th>
                                     <th class="col-3 text-center">Điểm thành phần</th>
                                     
                                     <th class="col-1 text-center">Hệ 10</th>
-                                    <th class="col-2 text-center">Hệ 4</th>
-                                    <th class="col-3 text-center">Điểm chữ</th>
+                                    <th class="col-1 text-center">Hệ 4</th>
+                                    <th class="col-1 text-center">Điểm chữ</th>
                                   
                                 </tr>
                             </thead>
@@ -48,6 +51,7 @@ $query_danhsach2 = mysqli_query($mysqli,$sql_danhsach);
                                 ?>
                                 <tr>
                                     <th class="text-center" scope="row"><?php echo $i ?> </th>
+                                    <td class="text-center"><?php echo $row['nam_hoc'] ?></td>
                                     <td class="text-center"><?php echo $row['tenhp'] ?></td>
                                     <td class="text-center"><?php echo $row['sotinchi'] ?></td>
                                     <td class="text-center">QT:<?php echo $row['quatrinh'] ?>   CK:<?php echo $row['cuoiky'] ?></td>

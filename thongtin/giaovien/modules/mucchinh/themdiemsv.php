@@ -59,7 +59,7 @@ $query_themdiem2 = mysqli_query($mysqli,$sql_themdiem);
                         
                         <button type="button" class="btn btn-lg btn-primary p-2" data-bs-toggle="modal" data-bs-target="#verticalycentered"></i>Lưu</button>
                             
-                            <a  href="index.php?action=sv-lop-hoc-phan&idgv=<?php echo $dong['magv'] ?>&malhp=<?php echo $dong['malhp'] ?>" asp-controller="BookCategory" asp-action="Index" class="btn btn-lg btn-warning p-2">Quay lại</a>
+                            <a  href="index.php?action=sv-lop-hoc-phan&magv=<?php echo $dong['magv'] ?>&malhp=<?php echo $dong['malhp'] ?>" asp-controller="BookCategory" asp-action="Index" class="btn btn-lg btn-warning p-2">Quay lại</a>
                         <?php 
                         }
                         ?>
